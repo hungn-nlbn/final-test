@@ -1,0 +1,2 @@
+class Cartegory < ApplicationRecord
+end

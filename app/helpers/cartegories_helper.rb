@@ -1,0 +1,2 @@
+module CartegoriesHelper
+end
