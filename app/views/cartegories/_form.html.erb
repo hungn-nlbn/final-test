@@ -1,3 +1,4 @@
+<div class = "product_form">
 <%= form_with(model: cartegory, local: true) do |form| %>
   <% if cartegory.errors.any? %>
     <div id="error_explanation">
@@ -10,18 +11,19 @@
       </ul>
     </div>
   <% end %>
-
+  <legend>Enter Cartegories Details </legend>
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, 'Name' %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :parent_id %>
-    <%= form.number_field :parent_id %>
+    <%= form.label :parent_id, 'Cartegory'%>
+    <%= form.select :parent_id, @cartegories.collect{|c| [c.name, c.id]}, :prompt => 'Select a parent cartegory...' %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

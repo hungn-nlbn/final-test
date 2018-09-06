@@ -1,3 +1,4 @@
+<title>Product Manager|Cartegory List</title>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -7,7 +8,11 @@
 
 <p>
   <strong>Parent:</strong>
-  <%= @cartegory.parent_id %>
+  <%if @cartegory.parent.present%>
+  <%= @cartegory.parent.name %>
+  <%else%>
+  <%= "None"%>
+  <%end%>
 </p>
 
 <%= link_to 'Edit', edit_cartegory_path(@cartegory) %> |

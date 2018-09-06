@@ -15,20 +15,23 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @cartegory_list = Cartegory.where(parent_id:0)
   end
 
   # GET /products/1/edit
   def edit
+    @cartegory_list = Cartegory.where(parent_id:0)
   end
 
   # POST /products
   # POST /products.json
   def create
+    @cartegory_list = Cartegory.where(parent_id:0)
     @product = Product.new(product_params)
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to products_url, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

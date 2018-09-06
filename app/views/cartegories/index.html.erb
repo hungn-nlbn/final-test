@@ -15,7 +15,13 @@
     <% @cartegories.each do |cartegory| %>
       <tr>
         <td><%= cartegory.name %></td>
-        <td><%= cartegory.parent_id %></td>
+        <td>
+            <%if cartegory.parent.present?%>
+              <%= cartegory.parent.name %>
+              <%else%>
+              <%= "None"%>
+            <%end%>         
+        </td>
         <td><%= link_to 'Show', cartegory %></td>
         <td><%= link_to 'Edit', edit_cartegory_path(cartegory) %></td>
         <td><%= link_to 'Destroy', cartegory, method: :delete, data: { confirm: 'Are you sure?' } %></td>

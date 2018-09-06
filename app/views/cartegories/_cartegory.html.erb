@@ -1,0 +1,6 @@
+<%cartegories.each do |cartegory|%>
+	<a class="dropdown-item" href="#"><%=cartegory.name%>
+	<%=cartegory.parents.each do |cart|%>
+		<a class="dropdown-item" href="#"><%=cart.name%></a>
+	</a>
+<%end%>	

@@ -2,12 +2,14 @@
 
 one:
   user_name: MyString
-  email: 
+  email: MyString
+  hashed_password: MyString
   salt: MyString
   role: MyString
 
 two:
   user_name: MyString
-  email: 
+  email: MyString
+  hashed_password: MyString
   salt: MyString
   role: MyString

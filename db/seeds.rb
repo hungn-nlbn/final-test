@@ -4,4 +4,7 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#  Character.create(name: 'Luke', movie: movies.first)
+# ruby encoding: utf-8
+cartegories = Cartegory.create!("name" => 'Hàng xuất khẩu', "parent_id" => 0)
+cartegories = Cartegory.create!("name" => 'Hàng nhập khẩu', "parent_id" => 0)

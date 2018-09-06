@@ -14,21 +14,24 @@ class CartegoriesController < ApplicationController
 
   # GET /cartegories/new
   def new
+    @cartegories = Cartegory.where(parent_id:0)
     @cartegory = Cartegory.new
   end
 
   # GET /cartegories/1/edit
   def edit
+   @cartegories = Cartegory.where(parent_id:0)
   end
 
   # POST /cartegories
   # POST /cartegories.json
   def create
+    @cartegories = Cartegory.where(parent_id:0)
     @cartegory = Cartegory.new(cartegory_params)
 
     respond_to do |format|
       if @cartegory.save
-        format.html { redirect_to @cartegory, notice: 'Cartegory was successfully created.' }
+        format.html { redirect_to cartegories_url, notice: 'Cartegory was successfully created.' }
         format.json { render :show, status: :created, location: @cartegory }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class CartegoriesController < ApplicationController
   def update
     respond_to do |format|
       if @cartegory.update(cartegory_params)
-        format.html { redirect_to @cartegory, notice: 'Cartegory was successfully updated.' }
+        format.html { redirect_to cartegories_url, notice: 'Cartegory was successfully updated.' }
         format.json { render :show, status: :ok, location: @cartegory }
       else
         format.html { render :edit }

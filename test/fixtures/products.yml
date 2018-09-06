@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  parent_id: 1
-  price: 9.99
+  parent_id: MyString
+  price: MyString
 
 two:
   name: MyString
-  parent_id: 1
-  price: 9.99
+  parent_id: MyString
+  price: MyString

@@ -1,3 +1,4 @@
+<div class = "product_form">
 <%= form_with(model: product, local: true) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
@@ -10,19 +11,19 @@
       </ul>
     </div>
   <% end %>
-
+  <legend>Edit Product Details</legend>
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, 'Name' %></br>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :parent_id %>
-    <%= form.number_field :parent_id %>
+    <%= form.label :parent_id, 'Cartegory'%></br>
+    <%= form.grouped_collection_select :parent_id, @cartegory_list, :childrens, :name, :id, :name, :prompt => 'Select a cartegory...' %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label :price, 'Price' %></br>
     <%= form.text_field :price %>
   </div>
 
@@ -30,3 +31,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
