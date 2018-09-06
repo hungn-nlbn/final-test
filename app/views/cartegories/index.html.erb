@@ -16,11 +16,7 @@
       <tr>
         <td><%= cartegory.name %></td>
         <td>
-            <%if cartegory.parent.present?%>
-              <%= cartegory.parent.name %>
-              <%else%>
-              <%= "None"%>
-            <%end%>         
+            <%= cartegory.parent.try(:name)%>        
         </td>
         <td><%= link_to 'Show', cartegory %></td>
         <td><%= link_to 'Edit', edit_cartegory_path(cartegory) %></td>

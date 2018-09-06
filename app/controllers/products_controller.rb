@@ -15,18 +15,15 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @cartegory_list = Cartegory.where(parent_id:0)
   end
 
   # GET /products/1/edit
   def edit
-    @cartegory_list = Cartegory.where(parent_id:0)
   end
 
   # POST /products
   # POST /products.json
   def create
-    @cartegory_list = Cartegory.where(parent_id:0)
     @product = Product.new(product_params)
 
     respond_to do |format|

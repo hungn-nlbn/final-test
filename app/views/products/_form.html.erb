@@ -11,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+  <FIELDSET> 
   <legend>Edit Product Details</legend>
   <div class="field">
     <%= form.label :name, 'Name' %></br>
@@ -19,7 +20,7 @@
 
   <div class="field">
     <%= form.label :parent_id, 'Cartegory'%></br>
-    <%= form.grouped_collection_select :parent_id, @cartegory_list, :childrens, :name, :id, :name, :prompt => 'Select a cartegory...' %>
+    <%= form.grouped_collection_select :parent_id , root_cartegories, :childrens, :name, :id, :name, :prompt => 'Select a cartegory...' %>
   </div>
 
   <div class="field">
@@ -30,5 +31,6 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  </FIELDSET>
 <% end %>
 </div>

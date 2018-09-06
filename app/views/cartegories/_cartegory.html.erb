@@ -1,6 +1,12 @@
-<%cartegories.each do |cartegory|%>
-	<a class="dropdown-item" href="#"><%=cartegory.name%>
-	<%=cartegory.parents.each do |cart|%>
-		<a class="dropdown-item" href="#"><%=cart.name%></a>
-	</a>
-<%end%>	
+
+<li class="dropdown-submenu">
+    <a href="#"><%=cartegory.name%></a>
+    <%if cartegory.childrens.present?%>
+        <ul class="dropdown-item">
+        	<%cartegory.childrens.each do |cart|%>
+          		<li><a href="#"><%=cart.name%></a></li>
+          	<%end%>
+        </ul>
+     <%end%>
+      <li class="divider" role="separator"></li>
+</li>		

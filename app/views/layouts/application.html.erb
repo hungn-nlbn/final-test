@@ -27,9 +27,11 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Cartegories
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%=render @cartegories%>
-              </div>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%=@cartegories.each do |cartegory|%>
+                    <%=render cartegory%>
+                <%end%>
+              </ul>
             </li>
           </ul>
         </div>
