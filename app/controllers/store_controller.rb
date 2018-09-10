@@ -1,5 +1,5 @@
 class StoreController < ApplicationController
   def index
-  	@cartegories = Cartegory.where(parent_id:0)
+  	@page_title = "ProductManager|Home"
   end
 end

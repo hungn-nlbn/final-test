@@ -4,26 +4,38 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    @page_title = "ProductManager|Products"
     @products = Product.all
+    if params[:search]
+      @products = Product.search(params[:search]).order("created_at DESC")
+    else
+      @products = Product.all.order("created_at DESC")
+    end
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @page_title = "ProductManage|Products Details"
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @cartegory_list = root_Products
+    @page_title = "ProductManage|New Product"
   end
 
   # GET /products/1/edit
   def edit
+      @cartegory_list = root_Products
+      @page_title = "ProductManage|Edit Product"
   end
 
   # POST /products
   # POST /products.json
   def create
+    @cartegory_list = root_Products
     @product = Product.new(product_params)
 
     respond_to do |format|

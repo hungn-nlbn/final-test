@@ -18,9 +18,15 @@
         <td>
             <%= cartegory.parent.try(:name)%>        
         </td>
+        <% if can? :show, cartegory %>
         <td><%= link_to 'Show', cartegory %></td>
+        <%end%>
+        <% if can? :update, cartegory %>
         <td><%= link_to 'Edit', edit_cartegory_path(cartegory) %></td>
+        <%end%>
+        <% if can? :destroy, cartegory %>
         <td><%= link_to 'Destroy', cartegory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

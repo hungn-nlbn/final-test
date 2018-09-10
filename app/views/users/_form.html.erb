@@ -1,3 +1,4 @@
+<div class="book_form">
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -10,33 +11,36 @@
       </ul>
     </div>
   <% end %>
-
+  <fieldset>
+  <legend>Enter User Details</legend>
   <div class="field">
-    <%= form.label :user_name %>
-    <%= form.text_field :user_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label :user_name, 'Name' %>
+    <%= form.text_field :user_name, :size => 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :hashed_password %>
-    <%= form.text_field :hashed_password %>
+    <%= form.label :email, 'Email' %>
+    <%= form.text_field :email, :size => 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :salt %>
-    <%= form.text_field :salt %>
+    <%= form.label :password, 'Password' %>
+    <%= form.password_field :password, :size => 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :role %>
-    <%= form.text_field :role %>
+    <%= form.label :password_confirmation, 'Confirm'%>
+    <%= form.password_field :password_confirmation, :size => 40 %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field">
+    <%= form.label :role, 'Role' %><br>
+    <%= form.select :role, User::ROLE_ENUM, :prompt => "Select a role..." %>
   </div>
+
+ <div class="actions">
+    <%= submit_tag 'Create User'%>
+  </div>
+  </fieldset>
 <% end %>
+</div>

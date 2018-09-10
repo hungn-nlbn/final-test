@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProductManager</title>
+    <title><%= @page_title || "Product Manager" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,8 +10,8 @@
   </head>
 
   <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+      <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Product Manager</a>        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,12 +28,30 @@
                 Cartegories
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <%=@cartegories.each do |cartegory|%>
-                    <%=render cartegory%>
+                <%=root_cartegories.each do |cartegory|%>
+                   <li class="dropdown-submenu">
+                      <a href="#"><%=cartegory.name%></a>
+                        <%if cartegory.childrens.present?%>
+                            <ul class="dropdown-item">
+                              <%cartegory.childrens.each do |cart|%>
+                                <li><a href="#"><%=cart.name%></a></li>
+                              <%end%>
+                            </ul>
+                        <%end%>
+                      <li class="divider" role="separator"></li>
+                    </li> 
                 <%end%>
-              </ul>
+               </ul>
             </li>
           </ul>
+        </div>
+        <%= form_tag(products_path, :method => "get", class: "form-inline my-2 my-lg-0") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "search here",
+            class: "form-control mr-sm-2" %>
+          <%= submit_tag "Search", class: 'btn btn-outline-success my-2 my-sm-0' %>
+        <%end%>
+        <div>
+          <%= button_to 'Logout', '/logout', :method => :delete , :class => "btn btn-outline-success my-2 my-sm-0" %> 
         </div>
       </nav>
     <%= yield %>

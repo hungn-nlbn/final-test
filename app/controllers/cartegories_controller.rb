@@ -1,32 +1,38 @@
 class CartegoriesController < ApplicationController
   before_action :set_cartegory, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
 
   # GET /cartegories
   # GET /cartegories.json
   def index
     @cartegories = Cartegory.all
+    @page_title = "ProductManager|Cartegories"
   end
 
   # GET /cartegories/1
   # GET /cartegories/1.json
   def show
+    @page_title = "ProductManager|Cartegories Details"
   end
 
   # GET /cartegories/new
   def new
-    @cartegories = Cartegory.where(parent_id:0)
+    @cartegories = root_cartegories
     @cartegory = Cartegory.new
+    @page_title = "ProductManager|New Cartegory"
+
   end
 
   # GET /cartegories/1/edit
   def edit
-   @cartegories = Cartegory.where(parent_id:0)
+   @cartegories = root_cartegories
+   @page_title = "ProductManager|Edit Cartegory"
   end
 
   # POST /cartegories
   # POST /cartegories.json
   def create
-    @cartegories = Cartegory.where(parent_id:0)
+    @cartegories = root_cartegories
     @cartegory = Cartegory.new(cartegory_params)
 
     respond_to do |format|
