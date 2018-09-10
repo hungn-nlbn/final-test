@@ -17,7 +17,6 @@ class CartegoriesController < ApplicationController
 
   # GET /cartegories/new
   def new
-    @cartegories = root_cartegories
     @cartegory = Cartegory.new
     @page_title = "ProductManager|New Cartegory"
 
@@ -25,14 +24,12 @@ class CartegoriesController < ApplicationController
 
   # GET /cartegories/1/edit
   def edit
-   @cartegories = root_cartegories
    @page_title = "ProductManager|Edit Cartegory"
   end
 
   # POST /cartegories
   # POST /cartegories.json
   def create
-    @cartegories = root_cartegories
     @cartegory = Cartegory.new(cartegory_params)
 
     respond_to do |format|

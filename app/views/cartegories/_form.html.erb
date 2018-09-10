@@ -1,11 +1,11 @@
 <div class = "product_form">
-<%= form_with(model: cartegory, local: true) do |form| %>
-  <% if cartegory.errors.any? %>
+<%= form_with(model: @cartegory, local: true) do |form| %>
+  <% if @cartegory.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cartegory.errors.count, "error") %> prohibited this cartegory from being saved:</h2>
 
       <ul>
-      <% cartegory.errors.full_messages.each do |message| %>
+      <% @cartegory.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= form.label :parent_id, 'Cartegory'%>
-    <%= form.select :parent_id, @cartegories.collect{|c| [c.name, c.id]}, :prompt => 'Select a parent cartegory...' %>
+    <%= form.select :parent_id, root_cartegories.collect{|c| [c.name, c.id]}, :prompt => 'Select a parent cartegory...' %>
   </div>
 
   <div class="actions">

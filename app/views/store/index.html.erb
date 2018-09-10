@@ -1,24 +1,23 @@
 <h1>Danh mục sản phẩm</h1>
-<%@cartegories.each do |cartegory|%>
+<%root_cartegories.each do |cartegory|%>
 	<h2><%=cartegory.name%></h2>
 	<%if cartegory.childrens.present?%>
 		<%cartegory.childrens.each do |cart|%>
+		<h3><%=cart.name%></h3>
 		<table>
 			<th>Name</th>
 			<th><colspan = "4"></colspan></th>
-     		<th>Cartegory</th>
-     		<th><colspan = "4"></colspan></th>
      		<th>Price</th>
 			<%if cart.products.present?%>
-				<%cart.products.each do |product|%>
+				<%@products = cart.products.page(params[:page]).per(4)%>
+				<%@products.each do |product|%>
 					<tr>
 						<td><%= product.name %></td>
 						<td><colspan = "4"></colspan></td>
-        				<td><%= product.cartegory.name%></td>
-        				<td><colspan = "4"></colspan></td>
         				<td><%= product.price %></td>
         			</tr>
         		<%end%>
+        		<%= paginate @products, theme: 'twitter-bootstrap-4'%>
         	<%end%>
         </table>
         <%end%>
