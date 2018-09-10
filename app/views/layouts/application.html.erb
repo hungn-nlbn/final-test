@@ -34,7 +34,7 @@
                         <%if cartegory.childrens.present?%>
                             <ul class="dropdown-item">
                               <%cartegory.childrens.each do |cart|%>
-                                <li><a href="#"><%=cart.name%></a></li>
+                                <li><%= link_to cart.name, cart%></li>
                               <%end%>
                             </ul>
                         <%end%>

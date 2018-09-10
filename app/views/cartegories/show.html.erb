@@ -8,8 +8,31 @@
 
 <p>
   <strong>Parent:</strong>
-   <%= cartegory.parent.try(:name)%>  
+   <%= @cartegory.parent.try(:name)%>  
 </p>
 
+<p><strong>Product</strong><p>
+<br>
+<% if @cartegory.products.present?%>
+<table>
+ <tbody>
+    <% @cartegory.products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <% if can? :show, product %>
+        <td><%= link_to 'Show', product %></td>
+        <% end %>
+        <% if can? :update, product %>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <% end %>
+        <% if can? :destroy, product %>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
 <%= link_to 'Edit', edit_cartegory_path(@cartegory) %> |
 <%= link_to 'Back', cartegories_path %>
