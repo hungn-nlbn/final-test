@@ -4,14 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @page_title = "ProductManager|Products"
-    @products = Product.all.page(params[:page]).per(4)
-    if params[:search]
-      @products = Product.search(params[:search]).order("created_at DESC").page(params[:page]).per(4)
-    else
-      @products = Product.all.order("created_at DESC").page(params[:page]).per(4)
-    end
-
+      @page_title = "ProductManager|Products"
+      @products = ProductService.index_product(params[:search], params[:page])
   end
 
   # GET /products/1
@@ -34,31 +28,25 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to products_url, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
+      result = ProductService.create_product(product_params)
+      if result.success?
+        redirect_to products_url
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        @product = result.product
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to products_url, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+      result = ProductService.update_product(@product, product_params)
+      if result.success?
+        redirect_to products_url
       else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        @product = result.product
+        render :edit
       end
-    end
   end
 
   # DELETE /products/1

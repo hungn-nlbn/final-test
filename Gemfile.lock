@@ -128,6 +128,8 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4-x64-mingw32)
       mini_portile2 (~> 2.3.0)
+    pattern_generator (0.1.0)
+      rails (>= 4.0.0)
     popper_js (1.14.3)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -228,6 +230,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mysql2 (>= 0.4.4, < 0.6.0)
+  pattern_generator
   popper_js (~> 1.14.3)
   puma (~> 3.11)
   rails (~> 5.2.1)

@@ -62,3 +62,4 @@ gem 'popper_js', '~> 1.14.3'
 gem 'kaminari'
 gem 'ransack'
 gem 'bootstrap4-kaminari-views'
+gem 'pattern_generator', group: :development

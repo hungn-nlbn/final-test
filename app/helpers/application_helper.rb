@@ -1,5 +1,5 @@
 module ApplicationHelper
 	def root_cartegories
-		@root_cartegories = Cartegory.where(parent_id:0)
+		@cartegories = Cartegory.where(parent_id:0).includes(:childrens)
 	end
 end
